@@ -41,8 +41,9 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 		}
 		strcat(*line, buffer);
 
+		/*A virer le \n et le remplacer par \0 --> string terminée par \0\0*/
 		if ((*line)[strlen(*line) - 1] == '\n')
-			return (strlen(*line));
+		return (strlen(*line));
 	}
 	return (-1);
 }
