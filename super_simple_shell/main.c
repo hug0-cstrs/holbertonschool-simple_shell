@@ -4,6 +4,7 @@ int main(void)
 {
 	char *command = NULL;
 	size_t command_size = 0;
+	ssize_t getline_result;
 
 	while (1)
 	{
@@ -11,11 +12,14 @@ int main(void)
 		printf("Vlad@Hugo$ ");
 
 		/* Lecture de la commande */
-		if (_getline(&command, &command_size, stdin) == -1)
+		getline_result = _getline(&command, &command_size, stdin);
+		if (getline_result == -1)
 		{
 			printf("Error: Failed to read command\n");
 			continue;
 		}
+		else if (getline_result == -2)
+			break;
 
 		/* Exécution de la commande */
 		execute_command(command);
@@ -24,6 +28,8 @@ int main(void)
 		free(command);
 		command = NULL;
 	}
-
+	free(command);
+	command = NULL;
+	
 	return 0;
 }
