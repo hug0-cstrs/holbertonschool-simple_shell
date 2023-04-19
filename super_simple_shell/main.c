@@ -25,7 +25,6 @@ int main(void)
 
 	while (1)
 	{
-		printf("Vlad@Hugo$ ");
 		getline_result = _getline(&command, &command_size, stdin);
 
 		if (getline_result == -1)
@@ -35,7 +34,6 @@ int main(void)
 		}
 		else if (getline_result == -2)
 		{
-			printf("End-of-file\n");
 			break;
 		}
 
