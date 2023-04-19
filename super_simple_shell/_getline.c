@@ -52,5 +52,5 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 		}
 	}
 
-	return (-1);
+	return feof(stream) ? -2 : -1;
 }
