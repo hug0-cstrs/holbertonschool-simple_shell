@@ -23,7 +23,6 @@ int main(void)
 		/* Libération de la mémoire allouée pour la commande */
 		free(command);
 		command = NULL;
-		command_size = 0;
 	}
 
 	return 0;
