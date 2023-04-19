@@ -61,7 +61,6 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 	return (-1);
 }
 
-/* Fonction qui exécute une commande  Ehhh ouiii mon petit Vlad il faut bien créer une fonction qui va excuter la commande qu'on va taper sinon c'est comme fabriquer un couteau sans lame... ça e sert à rien, on ne peut rien faire ahahah */
 void execute_command(char *command)
 {
 	char *args_array[256]; /* un petit tableau d'arguments, là j'ai décide de mettre 255 arguments */
