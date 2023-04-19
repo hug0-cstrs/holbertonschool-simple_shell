@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/wait.h>
+char *_strtok(char *src, char *delim);
 
 /* lit une ligne de texte sur l'entrée standard */
 ssize_t _getline(char **line, size_t *linesize, FILE *stream)
@@ -69,11 +70,11 @@ void execute_command(char *command)
 	int status;	       /* le status du processus enfant */
 
 	/* On découpe la commande en arguments */
-	char *arg = strtok(command, " "); /* Pour le découpage de la commande en arguments, ici on utiliser l'espace comme séparateur (mais on pourrais mettre d'autre séparateur) */
+	char *arg = _strtok(command, " "); /* Pour le découpage de la commande en arguments, ici on utiliser l'espace comme séparateur (mais on pourrais mettre d'autre séparateur) */
 	while (arg != NULL)		  /* boucle tant qu'il reste des arguments */
 	{
 		args_array[i++] = arg;	 /* On ajoute l'argument au tableau d'arguments et on incrémentation notre petit compteur */
-		arg = strtok(NULL, " "); /* ensuite on va récupérer l'argument suivant */
+		arg = _strtok(NULL, " "); /* ensuite on va récupérer l'argument suivant */
 	}
 	args_array[i] = NULL; /* On définit la dernière case du tableau d'arguments à NULL pour indiquer la fin des arguments */
 
@@ -87,8 +88,7 @@ void execute_command(char *command)
 	else if (pid == 0) /* code exécuté par le processus fils */
 	{
 		/* Le processus fils exécute la commande */
-		char *envp[] = {NULL};
-		if (execve(args_array[0], args_array, envp) == -1)
+		if (execve(args_array[0], args_array, NULL) == -1)
 		{
 			perror("Error:");
 			exit(1);
