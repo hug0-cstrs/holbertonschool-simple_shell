@@ -15,12 +15,15 @@
 ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 {
 	char buffer[128];
+	ssize_t chars_read = 0;
+	ssize_t total_chars = 0;
 
 	if (line == NULL || linesize == NULL || stream == NULL)
 	{
 		printf("Error: Bad argument or stream pointer\n");
 		return (-1);
 	}
+
 	if (*line == NULL)
 	{
 		*linesize = sizeof(buffer);
@@ -31,27 +34,40 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 			return (-1);
 		}
 	}
+
 	(*line)[0] = '\0';
-	while (fgets(buffer, *linesize, stdin))
+	while (fgets(buffer, sizeof(buffer), stream))
 	{
-		/* Check line size and realocate memory if too long */
-		if (*linesize - strlen(*line) < *linesize)
+		chars_read = strlen(buffer);
+
+		/* Check line size and reallocate memory if too long */
+		while (*linesize - total_chars < (ssize_t)chars_read)
 		{
 			*linesize *= 2;
 			*line = realloc(*line, *linesize);
 			if (*line == NULL)
 			{
 				printf("Memory reallocation error\n");
-				free(line);
 				return (-1);
 			}
 		}
+
 		strcat(*line, buffer);
-		if ((*line)[strlen(*line) - 1] == '\n')
+		total_chars += chars_read;
+
+		if ((*line)[total_chars - 1] == '\n')
 		{
-			(*line)[strlen(*line) - 1] = '\0';
-			return (strlen(*line));
+			(*line)[total_chars - 1] = '\0';
+			return total_chars;
 		}
 	}
-	return (feof(stream) ? -2 : -1);
+
+	if (feof(stream))
+	{
+		return (total_chars > 0) ? total_chars : -2;
+	}
+	else
+	{
+		return -1;
+	}
 }
