@@ -33,6 +33,8 @@ void execute_command(char *command)
 	}
 	else if (pid == 0)
 	{
+		if (arg == NULL)
+			exit(2);
 		if (execve(args_array[0], args_array, NULL) == -1)
 			exit(1);
 	}
