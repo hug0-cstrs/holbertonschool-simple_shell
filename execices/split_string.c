@@ -110,7 +110,7 @@ char **split_string(char *str)
 	return (array_of_words);
 }
 
-/*
+
 int main(void)
 {
 	char *str = "Vlad Hugo Axel Benjmain Hey";
@@ -125,4 +125,4 @@ int main(void)
 
 	return (0);
 }
-*/
+
