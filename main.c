@@ -25,7 +25,6 @@ int main(void)
 
 	while (1)
 	{
-		printf("Vlad@Hugo$ ");
 		getline_result = _getline(&command, &command_size, stdin);
 
 		if (getline_result == -1)
