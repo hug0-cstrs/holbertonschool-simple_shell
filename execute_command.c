@@ -10,13 +10,19 @@
  * Return: nothing
  */
 
-void execute_command(char *command)
+int execute_command(char *command)
 {
 	char *args_array[256];
 	int i = 0;
 	pid_t pid;
 	int status;
 	char *arg = _strtok(command, " ");
+
+	if (arg == NULL)
+	{
+		free(arg);
+		return(-1);
+	}
 
 	while (arg != NULL)
 	{
@@ -33,11 +39,10 @@ void execute_command(char *command)
 	}
 	else if (pid == 0)
 	{
-		if (arg == NULL)
-			exit(2);
 		if (execve(args_array[0], args_array, NULL) == -1)
 			exit(1);
 	}
 	else
 		wait(&status);
+		return (1);
 }
