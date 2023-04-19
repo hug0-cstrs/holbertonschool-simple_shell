@@ -34,10 +34,7 @@ void execute_command(char *command)
 	else if (pid == 0)
 	{
 		if (execve(args_array[0], args_array, NULL) == -1)
-		{
-			perror("./shell: No such file or directory\n");
 			exit(1);
-		}
 	}
 	else
 		wait(&status);
