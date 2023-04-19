@@ -3,7 +3,8 @@
 void execute_command(char *command)
 {
 	char *args_array[256]; /* un petit tableau d'arguments, là j'ai décide de mettre 255 arguments */
-	int i = 0;	       /* un petit compteur pour les arguments pour le kiff */
+	int i = 0;
+	int j = 0;	       /* un petit compteur pour les arguments pour le kiff */
 	pid_t pid;	       /* le PID du processus */
 	int status;	       /* le status du processus enfant */
 
@@ -35,5 +36,8 @@ void execute_command(char *command)
 	else /* code exécuté par le processus parent */
 	{
 		wait(&status); /* Le processus du père attend attente de la fin de l'exécution du processus fils */
+		for (j = 0; j < i; j++)
+			free(args_array[i]);
+		free(*args_array);
 	}
 }
