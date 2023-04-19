@@ -1,40 +1,44 @@
 #include "simple_shell.h"
 
+/**
+ * execute_command - function that executes a command
+ * @command: string containing the command to execute
+ *
+ * Description: delimits the command into tokens with _strtok function and
+ * stores each separated string argument in an array. The execute_command
+ * creates a new child process which executes the command with execve function
+ * Return: nothing
+ */
+
 void execute_command(char *command)
 {
-	char *args_array[256]; /* un petit tableau d'arguments, là j'ai décide de mettre 255 arguments */
+	char *args_array[256];
 	int i = 0;
-	/* un petit compteur pour les arguments pour le kiff */
-	pid_t pid;  /* le PID du processus */
-	int status; /* le status du processus enfant */
+	pid_t pid;
+	int status;
+	char *arg = _strtok(command, " ");
 
-	/* On découpe la commande en arguments */
-	char *arg = _strtok(command, " "); /* Pour le découpage de la commande en arguments, ici on utiliser l'espace comme séparateur (mais on pourrais mettre d'autre séparateur) */
-	while (arg != NULL)		   /* boucle tant qu'il reste des arguments */
+	while (arg != NULL)
 	{
-		args_array[i++] = arg;	  /* On ajoute l'argument au tableau d'arguments et on incrémentation notre petit compteur */
-		arg = _strtok(NULL, " "); /* ensuite on va récupérer l'argument suivant */
+		args_array[i++] = arg;
+		arg = _strtok(NULL, " ");
 	}
-	args_array[i] = NULL; /* On définit la dernière case du tableau d'arguments à NULL pour indiquer la fin des arguments */
+	args_array[i] = NULL;
 
-	/* Ici on va créer un processus fils pour exécuter la commande */
-	pid = fork(); /* du coup on créer un processus fils */
+	pid = fork();
 	if (pid == -1)
 	{
-		perror("Error:");
+		perror("Error: child process failed");
 		exit(1);
 	}
-	else if (pid == 0) /* code exécuté par le processus fils */
+	else if (pid == 0)
 	{
-		/* Le processus fils exécute la commande */
 		if (execve(args_array[0], args_array, NULL) == -1)
 		{
-			perror("Error:");
+			perror("./shell: No such file or directory\n");
 			exit(1);
 		}
 	}
-	else /* code exécuté par le processus parent */
-	{
-		wait(&status); /* Le processus du père attend attente de la fin de l'exécution du processus fils */
-	}
+	else
+		wait(&status);
 }

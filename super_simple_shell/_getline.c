@@ -1,5 +1,17 @@
 #include "simple_shell.h"
 
+/**
+ * _getline - get a line from a stream
+ * @line: a pointer to a malloced buffer for the line
+ * @linesize: the capacity of that buffer
+ * @stream: stream to read the line from
+ *
+ * Description: reads a line from stream, delimited by the newline character
+ * Return: return the number of characters written, excluding the terminating
+ * NUL character.  The value -1 is returned if an error occurs,
+ * or -2 if end-of-file is reached.
+ */
+
 ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 {
 	char buffer[128];
@@ -9,8 +21,6 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 		printf("Error: Bad argument or stream pointer\n");
 		return (-1);
 	}
-
-	/* On alloue de la mémoire pour la ligne qu'on lit */
 	if (*line == NULL)
 	{
 		*linesize = sizeof(buffer);
@@ -21,14 +31,10 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 			return (-1);
 		}
 	}
-
-	/* on initialise la ligne lue */
 	(*line)[0] = '\0';
-
-	/* On fait une petite boucle de lecture pour la la ligne */
 	while (fgets(buffer, *linesize, stdin))
 	{
-		/* on vérifie la taille de la ligne lue */
+		/* Check line size and realocate memory if too long */
 		if (*linesize - strlen(*line) < *linesize)
 		{
 			*linesize *= 2;
@@ -40,17 +46,12 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 				return (-1);
 			}
 		}
-
-		/* Permet de concaténer la ligne lue avec la ligne en cours de construction */
 		strcat(*line, buffer);
-
-		/* condition qui permet degérer de la fin de la ligne lue */
 		if ((*line)[strlen(*line) - 1] == '\n')
 		{
-			(*line)[strlen(*line) - 1] = '\0'; /* On supprime le caractère '\n' */
+			(*line)[strlen(*line) - 1] = '\0';
 			return (strlen(*line));
 		}
 	}
-
-	return feof(stream) ? -2 : -1;
+	return (feof(stream) ? -2 : -1);
 }
