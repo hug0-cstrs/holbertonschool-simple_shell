@@ -12,6 +12,6 @@
 
 char *_strtok(char *src, char *delim);
 ssize_t _getline(char **line, size_t *linesize, FILE *stream);
-void execute_command(char *command);
+int execute_command(char *command);
 
 #endif
