@@ -35,7 +35,6 @@ int main(void)
 		}
 		else if (getline_result == -2)
 		{
-			printf("End-of-file\n");
 			break;
 		}
 
