@@ -21,7 +21,7 @@ int execute_command(char *command)
 	if (arg == NULL)
 	{
 		free(arg);
-		return(-1);
+		return (-1);
 	}
 
 	while (arg != NULL)
@@ -43,6 +43,8 @@ int execute_command(char *command)
 			exit(1);
 	}
 	else
+	{
 		wait(&status);
 		return (1);
+	}
 }
