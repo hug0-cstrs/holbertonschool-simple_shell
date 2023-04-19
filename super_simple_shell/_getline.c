@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+#include "simple_shell.h"
 
 ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 {
@@ -13,6 +10,7 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 		return (-1);
 	}
 
+	/* On alloue de la mémoire pour la ligne qu'on lit */
 	if (*line == NULL)
 	{
 		*linesize = sizeof(buffer);
@@ -24,10 +22,13 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 		}
 	}
 
+	/* on initialise la ligne lue */
 	(*line)[0] = '\0';
 
+	/* On fait une petite boucle de lecture pour la la ligne */
 	while (fgets(buffer, *linesize, stdin))
 	{
+		/* on vérifie la taille de la ligne lue */
 		if (*linesize - strlen(*line) < *linesize)
 		{
 			*linesize *= 2;
@@ -39,11 +40,17 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 				return (-1);
 			}
 		}
+
+		/* Permet de concaténer la ligne lue avec la ligne en cours de construction */
 		strcat(*line, buffer);
 
-		/*A virer le \n et le remplacer par \0 --> string terminée par \0\0*/
+		/* condition qui permet degérer de la fin de la ligne lue */
 		if ((*line)[strlen(*line) - 1] == '\n')
-		return (strlen(*line));
+		{
+			(*line)[strlen(*line) - 1] = '\0'; /* On supprime le caractère '\n' */
+			return (strlen(*line));
+		}
 	}
+
 	return (-1);
 }

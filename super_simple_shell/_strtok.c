@@ -1,7 +1,5 @@
-#include <stddef.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "simple_shell.h"
+
 
 /*Function to find delimiter*/
 unsigned int is_delim(char c, char *delim)
