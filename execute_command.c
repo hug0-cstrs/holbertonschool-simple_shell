@@ -47,4 +47,5 @@ int execute_command(char *command)
 		wait(&status);
 		return (1);
 	}
+	return (1);
 }
