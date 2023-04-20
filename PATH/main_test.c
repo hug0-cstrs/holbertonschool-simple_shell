@@ -2,11 +2,21 @@
 
 int main(int argc, char *argv[], char *envp[])
 {
-	int getpath_status = get_path(envp);
+	char *token_value = get_path(envp);
+	char **path_values = get_path_values(token_value);
 	(void)argc;
 	(void)argv;
+	int i = 0;
 
-	printf("%d\n", getpath_status);
+	while (path_values[i])
+	{
+		printf("%s\n", path_values[i]);
+		free(path_values[i]);
+		i++;
+	}	
+
+	free(token_value);
+	free(path_values);
 
 	return (0);
 }
