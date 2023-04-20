@@ -18,9 +18,8 @@ int get_path(char *envp[])
 			token_value = _strtok(NULL, "=");
 			printf("---->%s\n", token_value);
 		}
+		free(temp);
 		i++;
 	}
-
-	free(temp);
 	return 0;
 }
