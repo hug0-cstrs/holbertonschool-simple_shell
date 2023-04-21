@@ -4,10 +4,11 @@ int main(int argc, char *argv[], char *envp[])
 {
 	char *token_value = get_path(envp);
 	char **path_values = get_path_values(token_value);
-	(void)argc;
-	(void)argv;
 	int i = 0;
 
+	(void)argc;
+	(void)argv;
+	
 	while (path_values[i])
 	{
 		printf("%s\n", path_values[i]);
