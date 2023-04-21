@@ -10,13 +10,18 @@
  * Return: nothing
  */
 
-int execute_command(char *command)
+int execute_command(char *command, char **path_values)
 {
 	char *args_array[256];
 	int i = 0;
+	int j = 0;
 	pid_t pid;
 	int status;
 	char *arg = _strtok(command, " ");
+	struct stat st; /*<------------*/
+	int flag = 0; /*<-------------*/
+	char *strcat = NULL;
+	int execve_res;
 
 	if (arg == NULL)
 	{
@@ -31,21 +36,67 @@ int execute_command(char *command)
 	}
 	args_array[i] = NULL;
 
-	pid = fork();
-	if (pid == -1)
+	/*-----------------------------------------*/
+
+	if (*args_array[0] == '/')
 	{
-		perror("Error: child process failed");
-		exit(1);
-	}
-	else if (pid == 0)
-	{
-		if (execve(args_array[0], args_array, NULL) == -1)
-			exit(1);
+		if (stat(args_array[0], &st) == 0)
+			flag = 1;
+		else
+		{
+			printf("Unknown path\n");
+			return (-1);
+		}
+
 	}
 	else
 	{
-		wait(&status);
-		return (1);
+		while (path_values[j])
+		{
+			strcat = _strcatcp(path_values[j], args_array[0]);
+			if (stat(strcat, &st) == 0)
+			{
+				flag = 2;
+				break;
+			}
+			else
+			{
+				j++;
+				flag = 0;
+				free(strcat);
+				continue;
+			}
+			free(strcat);
+		}
 	}
+	/*-----------------------------------------*/
+	if (flag)
+	{
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("Error: child process failed");
+			exit(1);
+		}
+		else if (pid == 0)
+		{	
+			if (flag == 1)
+				execve_res = execve(args_array[0], args_array, NULL);
+			else if (flag == 2)
+				execve_res = execve(strcat, args_array, NULL);
+			if (execve_res == -1)
+				return (-1);
+		}
+		else
+		{
+			wait(&status);
+			if (flag == 2)
+				free(strcat);
+			return (1);
+		}
+	}
+	if (!flag)
+		printf("Unknown command\n");
+
 	return (1);
 }

@@ -9,12 +9,15 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
 char *_strtok(char *src, char *delim);
 ssize_t _getline(char **line, size_t *linesize, FILE *stream);
-int execute_command(char *command);
+int execute_command(char *command, char **path_values);
 int _strcmp(char *s1, char *s2);
 char *get_path(char *envp[]);
 char **get_path_values(char *token_value);
+char *_strcatcp(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
 
 #endif

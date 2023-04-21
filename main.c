@@ -46,7 +46,7 @@ int main(int argc, char *argv[], char *envp[])
 			break;
 		}
 		
-		execute_command(command);
+		execute_command(command, path_values);
 
 		free(command);
 		command = NULL;
