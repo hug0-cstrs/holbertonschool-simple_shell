@@ -17,11 +17,20 @@
  *
  * Return: always 0
  */
-int main(void)
+int main(int argc, char *argv[], char *envp[])
 {
 	char *command = NULL;
 	size_t command_size = 0;
 	ssize_t getline_result;
+	char *path = NULL;
+	char **path_values = NULL;
+	int i = 0;
+
+	(void)argc;
+	(void)argv;
+
+	path = get_path(envp);
+	path_values = get_path_values(path);
 
 	while (1)
 	{
@@ -36,13 +45,20 @@ int main(void)
 		{
 			break;
 		}
-
+		
 		execute_command(command);
 
 		free(command);
 		command = NULL;
 	}
 	free(command);
+	free(path);
+	while (path_values[i])
+	{
+		free(path_values[i]);
+		i++;
+	}
+	free(path_values);
 	command = NULL;
 
 	return (0);
