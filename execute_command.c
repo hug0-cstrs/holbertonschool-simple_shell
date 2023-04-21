@@ -21,7 +21,7 @@ int execute_command(char *command, char **path_values)
 	struct stat st; /*<------------*/
 	int flag = 0; /*<-------------*/
 	char *strcat = NULL;
-	int execve_res;
+	int execve_res = 0;
 
 	if (arg == NULL)
 	{
