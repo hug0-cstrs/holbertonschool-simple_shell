@@ -75,4 +75,3 @@ char **get_path_values(char *token_value)
 	free(temp);
 	return (path_values);
 }
-

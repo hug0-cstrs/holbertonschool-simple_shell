@@ -1,5 +1,4 @@
 #include "simple_shell.h"
-
 /**
  * main - super simple shell program
  *
@@ -25,9 +24,7 @@ int main(int argc, char *argv[], char *envp[])
 	char *path = NULL;
 	char **path_values = NULL;
 	int i = 0;
-
-	(void)argc;
-	(void)argv;
+	(void)argc, (void)argv;
 
 	path = get_path(envp);
 	path_values = get_path_values(path);
@@ -45,9 +42,8 @@ int main(int argc, char *argv[], char *envp[])
 		{
 			break;
 		}
-		
-		execute_command(command, path_values);
 
+		execute_command(command, path_values);
 		free(command);
 		command = NULL;
 	}
@@ -60,6 +56,5 @@ int main(int argc, char *argv[], char *envp[])
 	}
 	free(path_values);
 	command = NULL;
-
 	return (0);
 }

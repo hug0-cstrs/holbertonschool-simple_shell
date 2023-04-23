@@ -59,7 +59,7 @@ char *_strcatcp(char *dest, char *src)
 
 	while (dest_cp[dest_t])
 		dest_t++;
-	
+
 	dest_cp[dest_t] = '/';
 
 	while (src[j])

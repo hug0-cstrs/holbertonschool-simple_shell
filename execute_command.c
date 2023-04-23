@@ -19,7 +19,7 @@ int execute_command(char *command, char **path_values)
 	int status;
 	char *arg = _strtok(command, " ");
 	struct stat st; /*<------------*/
-	int flag = 0; /*<-------------*/
+	int flag = 0;	/*<-------------*/
 	char *strcat = NULL;
 	int execve_res = 0;
 
@@ -47,7 +47,6 @@ int execute_command(char *command, char **path_values)
 			printf("Unknown path\n");
 			return (-1);
 		}
-
 	}
 	else
 	{
@@ -79,7 +78,7 @@ int execute_command(char *command, char **path_values)
 			exit(1);
 		}
 		else if (pid == 0)
-		{	
+		{
 			if (flag == 1)
 				execve_res = execve(args_array[0], args_array, NULL);
 			else if (flag == 2)
