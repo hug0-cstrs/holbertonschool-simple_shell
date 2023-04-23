@@ -3,25 +3,39 @@
 /**
  * execute_command - function that executes a command
  * @command: string containing the command to execute
+ * @path_values: An array of strings containing the path values
  *
- * Description: delimits the command into tokens with _strtok function and
- * stores each separated string argument in an array. The execute_command
- * creates a new child process which executes the command with execve function
- * Return: nothing
+ * Description: This function takes in the command entered by the user and
+ * the path values and executes the command by forking a child process and
+ * calling the execve() system call. It also checks if the entered command
+ * is a valid path and if not, it searches the path values for the command.
+ * If the command is not found in the path values,
+ * it prints "Unknown command" and returns -1. After execution, it frees the
+ * memory allocated for strcat.
+ *
+ * Return: Returns 1 on successful execution, -1 on failure
  */
+
+/**
+ * struct stat - structure definition containing information about a file
+ *
+ * Description: This structure is used to store information about a file.
+ * It is utilized by the stat() system call to retrieve information about
+ * the file such as its size, permissions, and creation time.
+ * The structure contains fields such as the file's inode number,
+ * owner and group IDs, protection mode, size, and timestamps.
+*/
 
 int execute_command(char *command, char **path_values)
 {
 	char *args_array[256];
-	int i = 0;
-	int j = 0;
+	int i = 0, j = 0, execve_res = 0;
 	pid_t pid;
 	int status;
-	char *arg = _strtok(command, " ");
 	struct stat st; /*<------------*/
 	int flag = 0;	/*<-------------*/
 	char *strcat = NULL;
-	int execve_res = 0;
+	char *arg = _strtok(command, " ");
 
 	if (arg == NULL)
 	{
