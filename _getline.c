@@ -15,8 +15,7 @@
 ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 {
 	char buffer[128];
-	size_t current_length;
-	size_t buffer_length;
+	size_t current_length, buffer_length;
 
 	if (line == NULL || linesize == NULL || stream == NULL)
 	{
