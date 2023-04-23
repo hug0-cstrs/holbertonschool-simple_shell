@@ -1,6 +1,9 @@
 #include "simple_shell.h"
 /**
  * main - super simple shell program
+ * @argc: The number of arguments passed to the program
+ * @argv: An array of strings containing the arguments passed to the program
+ * @envp: An array of strings containing the environment variables
  *
  * Description: Displays a prompt and waits for the user to type a command.
  * A command line always ends with a new line.
