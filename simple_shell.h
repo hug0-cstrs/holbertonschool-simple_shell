@@ -37,11 +37,13 @@ struct stat;
 
 char *_strtok(char *src, char *delim);
 ssize_t _getline(char **line, size_t *linesize, FILE *stream);
-int execute_command(char *command, char **path_values);
 int _strcmp(char *s1, char *s2);
 char *get_path(char *envp[]);
 char **get_path_values(char *token_value);
 char *_strcatcp(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
+char **create_args_array(char *command);
+char *check_command(char **args_array, char **path_values, int *flag);
+int execute_command(char **path_values, char *command);
 
 #endif
