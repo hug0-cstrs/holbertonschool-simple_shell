@@ -78,7 +78,7 @@ char *check_command(char **args_array, char **path_values, int *flag)
 	}
 	else
 	{
-		while (path_values[j])
+		while (path_values != NULL && path_values[j])
 		{
 			strcat = _strcatcp(path_values[j], args_array[0]);
 			if (stat(strcat, &st) == 0)
@@ -115,12 +115,15 @@ void free_args_array(char **args_array)
 {
 	int i = 0;
 
-	while (args_array[i])
+	if (args_array != NULL)
 	{
-		free(args_array[i]);
-		i++;
-	}
+		while (args_array[i])
+		{
+			free(args_array[i]);
+			i++;
+		}
 	free(args_array);
+	}
 }
 
 /**

@@ -50,7 +50,8 @@ int main(int argc, char *argv[], char *envp[])
 		command = NULL;
 	}
 	free(command);
-	free(path);
+	if (path != NULL)
+		free(path);
 	free_args_array(path_values);
 	command = NULL;
 	return (0);

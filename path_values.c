@@ -53,6 +53,8 @@ char *get_path(char *envp[])
 		free(temp);
 		i++;
 	}
+	if (token_value == NULL)
+		return (NULL);
 	token_value_cp = strdup(token_value);
 	free(temp);
 
@@ -72,6 +74,8 @@ char **get_path_values(char *token_value)
 	char **path_values = NULL;
 	char *temp = NULL;
 
+	if (token_value == NULL)
+		return (NULL);
 	/*Get number of list of directories in PATH variable */
 	temp = strdup(token_value);
 	token = _strtok(temp, ":");
