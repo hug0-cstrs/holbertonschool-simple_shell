@@ -183,7 +183,7 @@ int execute_command(char **path_values, char *command, char **argv)
 		free_args_array(args_array);
 	if (path_values == NULL)
 	{
-		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], argv[1]);
+		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 		exit(127);
 	}
 	return (1);
