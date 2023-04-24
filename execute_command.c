@@ -186,6 +186,5 @@ int execute_command(char **path_values, char *command, char **argv)
 		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 		exit(127);
 	}
-	fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 	return (1);
 }
