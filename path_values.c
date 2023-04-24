@@ -53,7 +53,7 @@ char *get_path(char *envp[])
 		free(temp);
 		i++;
 	}
-	if (token_value == NULL || token_value == "")
+	if (token_value == NULL)
 		return (NULL);
 	token_value_cp = strdup(token_value);
 	free(temp);
@@ -100,7 +100,10 @@ char **get_path_values(char *token_value)
 		token = _strtok(NULL, ":");
 		i++;
 	}
-	path_values[i] = NULL;
+	if (i == 0)
+		path_values[i] = "";
+	else
+		path_values[i] = NULL;
 
 	free(temp);
 	return (path_values);
