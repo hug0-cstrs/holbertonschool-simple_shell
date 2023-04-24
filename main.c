@@ -52,12 +52,7 @@ int main(int argc, char *argv[], char *envp[])
 	}
 	free(command);
 	free(path);
-	while (path_values[i])
-	{
-		free(path_values[i]);
-		i++;
-	}
-	free(path_values);
+	free_args_array(path_values);
 	command = NULL;
 	return (0);
 }
