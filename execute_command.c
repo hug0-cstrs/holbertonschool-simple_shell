@@ -66,7 +66,7 @@ char *check_command(char **args_array, char **path_values, int *flag)
 	if (args_array == NULL)
 		return (NULL);
 
-	if (*args_array[0] == '/')
+	if (*args_array[0] == '/' || *args_array[0] == '.')
 	{
 		if (stat(args_array[0], &st) == 0)
 			*flag = 1;
