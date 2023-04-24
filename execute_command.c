@@ -140,7 +140,7 @@ void free_args_array(char **args_array)
  */
 int execute_command(char **path_values, char *command)
 {
-	int execve_res = 0, status, flag = 0, i = 0;
+	int execve_res = 0, status, flag = 0;
 	pid_t pid;
 	char **args_array = create_args_array(command);
 	char *strcat = check_command(args_array, path_values, &flag);

@@ -26,7 +26,6 @@ int main(int argc, char *argv[], char *envp[])
 	ssize_t getline_result;
 	char *path = NULL;
 	char **path_values = NULL;
-	int i = 0;
 	(void)argc, (void)argv;
 
 	path = get_path(envp);
