@@ -160,9 +160,9 @@ int execute_command(char **path_values, char *command, char **argv)
 		else if (pid == 0)
 		{
 			if (flag == 1)
-				execve_res = execve(args_array[0], args_array, environ);
+				execve_res = execve(args_array[0], args_array, NULL);
 			else if (flag == 2)
-				execve_res = execve(strcat, args_array, environ);
+				execve_res = execve(strcat, args_array, NULL);
 			if (execve_res == -1)
 				return (-1);
 		}
@@ -186,5 +186,6 @@ int execute_command(char **path_values, char *command, char **argv)
 		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 		exit(127);
 	}
+	fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 	return (1);
 }
