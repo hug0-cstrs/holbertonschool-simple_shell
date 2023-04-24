@@ -18,10 +18,7 @@ ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 	size_t current_length, buffer_length;
 
 	if (line == NULL || linesize == NULL || stream == NULL)
-	{
-		printf("Error: Bad argument or stream pointer\n");
 		return (-1);
-	}
 	if (*line == NULL)
 	{
 		*linesize = sizeof(buffer);
