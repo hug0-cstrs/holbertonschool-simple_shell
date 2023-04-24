@@ -26,8 +26,7 @@ int main(int argc, char *argv[], char *envp[])
 	ssize_t getline_result;
 	char *path = NULL;
 	char **path_values = NULL;
-	(void)argc, (void)argv;
-
+	(void)argc;
 	path = get_path(envp);
 	path_values = get_path_values(path);
 
@@ -45,7 +44,7 @@ int main(int argc, char *argv[], char *envp[])
 			break;
 		}
 
-		execute_command(path_values, command);
+		execute_command(path_values, command, argv);
 		free(command);
 		command = NULL;
 	}

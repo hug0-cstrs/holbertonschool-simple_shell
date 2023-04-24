@@ -53,7 +53,7 @@ char *get_path(char *envp[])
 		free(temp);
 		i++;
 	}
-	if (token_value == NULL)
+	if (token_value == NULL || token_value == "")
 		return (NULL);
 	token_value_cp = strdup(token_value);
 	free(temp);

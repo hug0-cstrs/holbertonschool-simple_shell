@@ -130,6 +130,7 @@ void free_args_array(char **args_array)
  * execute_command - function that executes a command
  * @command: string containing the command to execute
  * @path_values: An array of strings containing the path values
+ * @argv: An array of strings containing the arguments passed to the program
  *
  * Description: This function takes in the command entered by the user and
  * the path values and executes the command by forking a child process and
@@ -141,7 +142,7 @@ void free_args_array(char **args_array)
  *
  * Return: Returns 1 on successful execution, -1 on failure
  */
-int execute_command(char **path_values, char *command)
+int execute_command(char **path_values, char *command, char **argv)
 {
 	int execve_res = 0, status, flag = 0;
 	pid_t pid;
@@ -180,5 +181,10 @@ int execute_command(char **path_values, char *command)
 	}
 	if (args_array != NULL)
 		free_args_array(args_array);
+	if (path_values == NULL)
+	{
+		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], argv[1]);
+		exit(127);
+	}
 	return (1);
 }
