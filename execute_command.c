@@ -156,9 +156,9 @@ int execute_command(char **path_values, char *command)
 		else if (pid == 0)
 		{
 			if (flag == 1)
-				execve_res = execve(args_array[0], args_array, NULL);
+				execve_res = execve(args_array[0], args_array, environ);
 			else if (flag == 2)
-				execve_res = execve(strcat, args_array, NULL);
+				execve_res = execve(strcat, args_array, environ);
 			if (execve_res == -1)
 				return (-1);
 		}
