@@ -15,17 +15,6 @@
  *
  * Return: Returns 1 on successful execution, -1 on failure
  */
-
-/**
- * struct stat - structure definition containing information about a file
- *
- * Description: This structure is used to store information about a file.
- * It is utilized by the stat() system call to retrieve information about
- * the file such as its size, permissions, and creation time.
- * The structure contains fields such as the file's inode number,
- * owner and group IDs, protection mode, size, and timestamps.
-*/
-
 int execute_command(char *command, char **path_values)
 {
 	char *args_array[256];
