@@ -1,5 +1,72 @@
 #include "simple_shell.h"
 
+char **create_args_array(char *command)
+{
+	int i = 0;
+	char **args_array = NULL;
+	char *arg = NULL;
+
+	args_array = malloc(sizeof(char *) * 256);
+	if (args_array == NULL)
+		return (NULL);
+	
+	arg = _strtok(command, " ");
+	if (arg == NULL)
+	{
+		/*free(arg);*/
+		return (NULL);
+	}
+
+	while (arg != NULL)
+	{
+		args_array[i++] = arg;
+		arg = _strtok(NULL, " ");
+	}
+	args_array[i] = NULL;
+
+	return (args_array);
+}
+
+char *check_command(char **args_array, char **path_values, int *flag)
+{
+	char *strcat = NULL;
+	int j = 0;
+	struct stat st;
+
+	if (*args_array[0] == '/')
+	{
+		if (stat(args_array[0], &st) == 0)
+			*flag = 1;
+		else
+		{
+			printf("Unknown path\n");
+			return (NULL);
+		}
+	}
+	else
+	{
+		while (path_values[j])
+		{
+			strcat = _strcatcp(path_values[j], args_array[0]);
+			if (stat(strcat, &st) == 0)
+			{
+				*flag = 2;
+				break;
+			}
+			else
+			{
+				j++;
+				*flag = 0;
+				free(strcat);
+				continue;
+			}
+			free(strcat);
+		}
+	}
+
+	return (strcat);
+}
+
 /**
  * execute_command - function that executes a command
  * @command: string containing the command to execute
@@ -15,63 +82,13 @@
  *
  * Return: Returns 1 on successful execution, -1 on failure
  */
-int execute_command(char *command, char **path_values)
+int execute_command(char **path_values, char *command)
 {
-	char *args_array[256];
-	int i = 0, j = 0, execve_res = 0;
+	int execve_res = 0, status, flag = 0, i = 0;
 	pid_t pid;
-	int status;
-	struct stat st; /*<------------*/
-	int flag = 0;	/*<-------------*/
-	char *strcat = NULL;
-	char *arg = _strtok(command, " ");
+	char **args_array = create_args_array(command);
+	char *strcat = check_command(args_array, path_values, &flag);
 
-	if (arg == NULL)
-	{
-		free(arg);
-		return (-1);
-	}
-
-	while (arg != NULL)
-	{
-		args_array[i++] = arg;
-		arg = _strtok(NULL, " ");
-	}
-	args_array[i] = NULL;
-
-	/*-----------------------------------------*/
-
-	if (*args_array[0] == '/')
-	{
-		if (stat(args_array[0], &st) == 0)
-			flag = 1;
-		else
-		{
-			printf("Unknown path\n");
-			return (-1);
-		}
-	}
-	else
-	{
-		while (path_values[j])
-		{
-			strcat = _strcatcp(path_values[j], args_array[0]);
-			if (stat(strcat, &st) == 0)
-			{
-				flag = 2;
-				break;
-			}
-			else
-			{
-				j++;
-				flag = 0;
-				free(strcat);
-				continue;
-			}
-			free(strcat);
-		}
-	}
-	/*-----------------------------------------*/
 	if (flag)
 	{
 		pid = fork();
@@ -99,6 +116,11 @@ int execute_command(char *command, char **path_values)
 	}
 	if (!flag)
 		printf("Unknown command\n");
-
+	while (args_array[i])
+	{
+		free(args_array[i]);
+		i++;
+	}
+	free(args_array);
 	return (1);
 }
