@@ -6,20 +6,20 @@ char **create_args_array(char *command)
 	char **args_array = NULL;
 	char *arg = NULL;
 
-	args_array = malloc(sizeof(char *) * 256);
-	if (args_array == NULL)
-		return (NULL);
-	
 	arg = _strtok(command, " ");
 	if (arg == NULL)
 	{
-		/*free(arg);*/
+		// free(arg);
 		return (NULL);
 	}
 
+	args_array = malloc(sizeof(char *) * 256);
+	if (args_array == NULL)
+		return (NULL);
+
 	while (arg != NULL)
 	{
-		args_array[i++] = arg;
+		args_array[i++] = strdup(arg);
 		arg = _strtok(NULL, " ");
 	}
 	args_array[i] = NULL;
@@ -32,6 +32,9 @@ char *check_command(char **args_array, char **path_values, int *flag)
 	char *strcat = NULL;
 	int j = 0;
 	struct stat st;
+
+	if (args_array == NULL)
+		return (NULL);
 
 	if (*args_array[0] == '/')
 	{
@@ -65,6 +68,17 @@ char *check_command(char **args_array, char **path_values, int *flag)
 	}
 
 	return (strcat);
+}
+
+void free_args_array(char **args_array)
+{
+	int i = 0;
+	while (args_array[i])
+	{
+		free(args_array[i]);
+		i++;
+	}
+	free(args_array);
 }
 
 /**
@@ -110,17 +124,18 @@ int execute_command(char **path_values, char *command)
 		{
 			wait(&status);
 			if (flag == 2)
+			{
+				free_args_array(args_array);
 				free(strcat);
+			}	
+			else if (flag == 1)
+				free_args_array(args_array);
 			return (1);
 		}
 	}
 	if (!flag)
 		printf("Unknown command\n");
-	while (args_array[i])
-	{
-		free(args_array[i]);
-		i++;
-	}
-	free(args_array);
+	if (args_array != NULL)
+		free_args_array(args_array);
 	return (1);
 }
