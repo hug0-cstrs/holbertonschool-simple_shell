@@ -178,8 +178,6 @@ int execute_command(char **path_values, char *command)
 			return (1);
 		}
 	}
-	if (!flag)
-		printf("Unknown command\n");
 	if (args_array != NULL)
 		free_args_array(args_array);
 	return (1);
