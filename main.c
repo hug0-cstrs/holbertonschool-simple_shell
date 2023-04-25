@@ -48,14 +48,21 @@ int main(int argc, char *argv[], char *envp[])
 		free(command);
 		command = NULL;
 	}
+	
 	free(command);
-	if (path != NULL)
-		free(path);
-	free_args_array(path_values);
 	command = NULL;
 
-	if (path_values == NULL)
+	if (path != NULL)
+		free(path);
+
+	if (path_values != NULL && *path_values[0] == '\0')
+	{
+		free_args_array(path_values);
 		return (127);
+	}
+		
+	free_args_array(path_values);
+
 		
 	return (0);
 }

@@ -73,6 +73,7 @@ char **get_path_values(char *token_value)
 	char *token = NULL;
 	char **path_values = NULL;
 	char *temp = NULL;
+	char *empty_string = "";
 
 	if (token_value == NULL)
 		return (NULL);
@@ -101,7 +102,10 @@ char **get_path_values(char *token_value)
 		i++;
 	}
 	if (i == 0)
-		path_values[i] = "";
+	{
+		path_values[i] = strdup(empty_string);
+		path_values[i + 1] = NULL; 
+	}
 	else
 		path_values[i] = NULL;
 

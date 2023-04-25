@@ -93,7 +93,7 @@ char *check_command(char **args_array, char **path_values, int *flag)
 				free(strcat);
 				continue;
 			}
-			free(strcat);
+			free(strcat); /*?????*/
 		}
 	}
 
@@ -179,11 +179,12 @@ int execute_command(char **path_values, char *command, char **argv)
 			return (1);
 		}
 	}
-	if (path_values == NULL)
+
+	if (path_values != NULL && *path_values[0] == '\0')
 		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 
 	if (args_array != NULL)
 		free_args_array(args_array);
-		
+	
 	return (1);
 }
