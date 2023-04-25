@@ -179,12 +179,12 @@ int execute_command(char **path_values, char *command, char **argv)
 			return (1);
 		}
 	}
-	if (args_array != NULL)
-		free_args_array(args_array);
 	if (path_values == NULL)
 	{
 		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 		exit(127);
 	}
+	if (args_array != NULL)
+		free_args_array(args_array);
 	return (1);
 }
