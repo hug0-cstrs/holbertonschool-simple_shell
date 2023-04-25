@@ -32,7 +32,7 @@ int _strcmp(char *s1, char *s2)
  *
  * Return: a pointer to a copy of the PATH environment variable value
  */
-char *get_path(char *envp[], int *flag1)
+char *get_path(char *envp[])
 {
 	int i = 0;
 	char *token_name = NULL;
@@ -40,19 +40,11 @@ char *get_path(char *envp[], int *flag1)
 	char *temp = NULL;
 	char *path_name = "PATH";
 	char *token_value_cp = NULL;
-	char *path_name1 = "PATH1";
 
 	while (envp[i] != NULL)
 	{
 		temp = strdup(envp[i]);
 		token_name = _strtok(temp, "=");
-
-		if ((_strcmp(token_name, path_name1)) == 0)
-		{
-			*flag1 = 1;
-			return (NULL);
-		}
-
 		if ((_strcmp(token_name, path_name)) == 0)
 		{
 			token_value = _strtok(NULL, "=");
