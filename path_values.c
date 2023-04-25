@@ -48,6 +48,8 @@ char *get_path(char *envp[])
 		if ((_strcmp(token_name, path_name)) == 0)
 		{
 			token_value = _strtok(NULL, "=");
+			if (token_value == NULL && *(temp + strlen(token_name) + 1) == '\0')
+				token_value = "";
 			break;
 		}
 		free(temp);
@@ -79,14 +81,18 @@ char **get_path_values(char *token_value)
 		return (NULL);
 	/*Get number of list of directories in PATH variable */
 	temp = strdup(token_value);
+	printf("Token value: %s\nTemp: %s\nToken: %s\n\n", token_value, temp, token);
 	token = _strtok(temp, ":");
+	printf("Token value: %s\nTemp: %s\nToken: %s\n\n", token_value, temp, token);
 	while (token != NULL)
 	{
 		token = _strtok(NULL, ":");
 		j++;
 	}
-
-	path_values = malloc(sizeof(char *) * (j + 1));
+	if (*token_value == '\0')
+		path_values = malloc(sizeof(char *) * (j + 2));
+	else
+		path_values = malloc(sizeof(char *) * (j + 1));
 	if (path_values == NULL)
 	{
 		printf("Memory allocation error\n");
@@ -95,6 +101,7 @@ char **get_path_values(char *token_value)
 
 	i = 0;
 	token = _strtok(token_value, ":");
+	printf("Token value: %s\nTemp: %s\nToken: %s\n\n", token_value, temp, token);
 	while (token != NULL)
 	{
 		path_values[i] = strdup(token);
