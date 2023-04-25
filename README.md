@@ -3,3 +3,6 @@
 # :mortar_board: C - Simple Shell
 
 Second group project at Holberton School : implement our own simplified version of a UNIX command line interpreter in C.
+
+
+
