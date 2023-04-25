@@ -147,7 +147,6 @@ int execute_command(char **path_values, char *command, char **argv)
 	int execve_res = 0, status, flag = 0;
 	pid_t pid;
 	char **args_array = create_args_array(command);
-	char **env = environ;
 	char *strcat = check_command(args_array, path_values, &flag);
 
 	if (flag)
@@ -181,7 +180,7 @@ int execute_command(char **path_values, char *command, char **argv)
 		}
 	}
 
-	if ((path_values != NULL && *path_values[0] == '\0') || *env == NULL)
+	if (!*environ || (path_values != NULL && *path_values[0] == '\0'))
 	{
 		if (args_array != NULL)
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
