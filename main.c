@@ -55,7 +55,7 @@ int main(int argc, char *argv[], char *envp[])
 	if (path != NULL)
 		free(path);
 
-	if (!environ || (path_values != NULL && *path_values[0] == '\0'))
+	if ((environ && environ[0] != NULL) || (path_values != NULL && *path_values[0] == '\0'))
 	{
 		free_args_array(path_values);
 		return (127);
