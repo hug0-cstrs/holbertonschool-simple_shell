@@ -180,7 +180,7 @@ int execute_command(char **path_values, char *command, char **argv)
 		}
 	}
 
-	if (!*environ || (path_values != NULL && *path_values[0] == '\0'))
+	if (!environ || (path_values != NULL && *path_values[0] == '\0'))
 	{
 		if (args_array != NULL)
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
