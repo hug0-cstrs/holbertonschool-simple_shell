@@ -26,9 +26,11 @@ int main(int argc, char *argv[], char *envp[])
 	ssize_t getline_result;
 	char *path = NULL;
 	char **path_values = NULL;
+	int flag1 = 0;
 	(void)argc;
-	path = get_path(envp);
+	path = get_path(envp, &flag1);
 	path_values = get_path_values(path);
+
 
 	while (1)
 	{
@@ -44,7 +46,7 @@ int main(int argc, char *argv[], char *envp[])
 			break;
 		}
 
-		execute_command(path_values, command, argv);
+		execute_command(path_values, command, argv, flag1);
 		free(command);
 		command = NULL;
 	}
@@ -55,7 +57,7 @@ int main(int argc, char *argv[], char *envp[])
 	if (path != NULL)
 		free(path);
 
-	if ((path_values != NULL && *path_values[0] == '\0') || *envp == NULL)
+	if ((path_values != NULL && *path_values[0] == '\0') || *envp == NULL || flag1 == 1)
 	{
 		free_args_array(path_values);
 		return (127);
