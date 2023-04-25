@@ -142,7 +142,7 @@ void free_args_array(char **args_array)
  *
  * Return: Returns 1 on successful execution, -1 on failure
  */
-int execute_command(char **path_values, char *command, char **argv, int flag1)
+int execute_command(char **path_values, char *command, char **argv)
 {
 	int execve_res = 0, status, flag = 0;
 	pid_t pid;
@@ -181,7 +181,7 @@ int execute_command(char **path_values, char *command, char **argv, int flag1)
 		}
 	}
 
-	if ((path_values != NULL && *path_values[0] == '\0') || *env == NULL || flag1 == 1)
+	if ((path_values != NULL && *path_values[0] == '\0') || *env == NULL)
 	{
 		if (args_array != NULL)
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
