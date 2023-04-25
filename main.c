@@ -53,5 +53,9 @@ int main(int argc, char *argv[], char *envp[])
 		free(path);
 	free_args_array(path_values);
 	command = NULL;
+
+	if (path_values == NULL)
+		return (127);
+		
 	return (0);
 }
