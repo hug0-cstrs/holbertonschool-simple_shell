@@ -144,7 +144,7 @@ void free_args_array(char **args_array)
  */
 int execute_command(char **path_values, char *command, char **argv, char *path)
 {
-	int execve_res = 0, status, flag = 0;
+	int execve_res = 0, status, flag = 0, exit_status;
 	pid_t pid;
 	char **args_array = create_args_array(command);
 	char *strcat = check_command(args_array, path_values, &flag);
@@ -171,6 +171,33 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 		else
 		{
 			wait(&status);
+
+			if (WIFEXITED(status)) /* 1 if child executed normally */
+			{
+				exit_status = WEXITSTATUS(status);
+				if (exit_status != 0) /* if non null, means error at execution */
+				{
+					if (flag == 2)
+					{
+						free(command);
+						free_args_array(args_array);
+						free(strcat);
+						if (path != NULL)
+							free(path);
+						free_args_array(path_values);
+					}
+					else if (flag == 1)
+					{
+						free(command);
+						free_args_array(args_array);
+						if (path != NULL)
+							free(path);
+						free_args_array(path_values);
+					}
+					exit (2);
+				}
+			}
+
 			if (flag == 2)
 			{
 				free_args_array(args_array);
