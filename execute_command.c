@@ -142,13 +142,14 @@ void free_args_array(char **args_array)
  *
  * Return: Returns 1 on successful execution, -1 on failure
  */
-int execute_command(char **path_values, char *command, char **argv)
+int execute_command(char **path_values, char *command, char **argv, char *path)
 {
 	int execve_res = 0, status, flag = 0;
 	pid_t pid;
 	char **args_array = create_args_array(command);
 	char *strcat = check_command(args_array, path_values, &flag);
-	int path1 = search_path1(environ); /*<------------*/
+	int path1 = search_path1(environ);
+	char *_exit = "exit";
 
 	if (flag)
 	{
@@ -179,6 +180,16 @@ int execute_command(char **path_values, char *command, char **argv)
 				free_args_array(args_array);
 			return (1);
 		}
+	}
+
+	if (_strcmp(args_array[0], _exit) == 0)
+	{
+		free(command);
+		if (path != NULL)
+			free(path);
+		free_args_array(args_array);
+		free_args_array(path_values);
+		exit(0);
 	}
 
 	if (path1 == -1) /*<------------*/

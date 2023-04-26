@@ -46,7 +46,7 @@ char *_strcatcp(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 char **create_args_array(char *command);
 char *check_command(char **args_array, char **path_values, int *flag);
-int execute_command(char **path_values, char *command, char **argv);
+int execute_command(char **path_values, char *command, char **argv, char *path);
 void free_args_array(char **args_array);
 int search_path1(char **environ);
 
