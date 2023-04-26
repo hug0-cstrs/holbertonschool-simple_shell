@@ -181,7 +181,7 @@ int execute_command(char **path_values, char *command, char **argv)
 		}
 	}
 
-	if (path1 == -1 || path1 == 1) /*<------------*/
+	if (path1 == -1) /*<------------*/
 	{
 		if (args_array != NULL)
 		{
@@ -190,7 +190,7 @@ int execute_command(char **path_values, char *command, char **argv)
 		}	
 	}
 
-	if ((path_values != NULL && *path_values[0] == '\0') || flag == 0) /*<-------*/
+	if ((path_values != NULL && *path_values[0] == '\0') || flag == 0 || path1 == 1) /*<-------*/
 	{
 		if (args_array != NULL)
 		{
