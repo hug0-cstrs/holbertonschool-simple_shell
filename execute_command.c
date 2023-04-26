@@ -148,6 +148,7 @@ int execute_command(char **path_values, char *command, char **argv)
 	pid_t pid;
 	char **args_array = create_args_array(command);
 	char *strcat = check_command(args_array, path_values, &flag);
+	int path1 = search_path1(environ); /*<------------*/
 
 	if (flag)
 	{
@@ -180,7 +181,13 @@ int execute_command(char **path_values, char *command, char **argv)
 		}
 	}
 
-	if ((environ && environ[0] == NULL) || (path_values != NULL && *path_values[0] == '\0'))
+	if (path1 == -1 || path1 == 1) /*<------------*/
+	{
+		if (args_array != NULL)
+			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
+	}
+
+	if ((path_values != NULL && *path_values[0] == '\0'))
 	{
 		if (args_array != NULL)
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);

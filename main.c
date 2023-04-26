@@ -21,6 +21,7 @@
  */
 int main(int argc, char *argv[], char *envp[])
 {
+	int path1 = 0;/*<------------*/
 	char *command = NULL;
 	size_t command_size = 0;
 	ssize_t getline_result;
@@ -29,6 +30,8 @@ int main(int argc, char *argv[], char *envp[])
 	(void)argc;
 	path = get_path(envp);
 	path_values = get_path_values(path);
+
+	path1 = search_path1(envp); /*<------------*/
 
 	while (1)
 	{
@@ -54,8 +57,14 @@ int main(int argc, char *argv[], char *envp[])
 
 	if (path != NULL)
 		free(path);
+	
+	if (path1 == -1 || path1 == 1) /*<------------*/
+	{
+		free_args_array(path_values);
+		return (127);
+	}
 
-	if ((environ && environ[0] == NULL) || (path_values != NULL && *path_values[0] == '\0'))
+	if ((path_values != NULL && *path_values[0] == '\0'))
 	{
 		free_args_array(path_values);
 		return (127);
