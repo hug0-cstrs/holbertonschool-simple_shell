@@ -62,6 +62,8 @@ char *check_command(char **args_array, char **path_values, int *flag)
 	char *strcat = NULL;
 	int j = 0;
 	struct stat st;
+	char *env = "env";
+	char *env_path = "/usr/bin";
 
 	if (args_array == NULL)
 		return (NULL);
@@ -95,6 +97,12 @@ char *check_command(char **args_array, char **path_values, int *flag)
 			}
 			free(strcat); /*?????*/
 		}
+	}
+
+	if ((_strcmp(args_array[0], env) == 0) && path_values == NULL)
+	{
+		strcat = _strcatcp(env_path, env);
+		*flag = 2;
 	}
 
 	return (strcat);
@@ -209,7 +217,7 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 		}
 	}
 
-	if (_strcmp(args_array[0], _exit) == 0)
+	if (args_array != NULL && (_strcmp(args_array[0], _exit) == 0))
 	{
 		free(command);
 		if (path != NULL)
@@ -219,23 +227,25 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 		exit(0);
 	}
 
-	if (path1 == -1) /*<------------*/
+	if (path1 == -1)
 	{
 		if (args_array != NULL)
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 			free_args_array(args_array);
+			return (0);
 		}	
 	}
 
-	if ((path_values != NULL && *path_values[0] == '\0') || flag == 0 || path1 == 1) /*<-------*/
+	if ((path_values != NULL && *path_values[0] == '\0') || flag == 0 || path1 == 1)
 	{
 		if (args_array != NULL)
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 			free_args_array(args_array);
+			return (0);
 		}
 	}
 	
-	return (0);
+	return (2);
 }
