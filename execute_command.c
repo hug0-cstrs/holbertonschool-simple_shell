@@ -181,20 +181,23 @@ int execute_command(char **path_values, char *command, char **argv)
 		}
 	}
 
-	if (path1 == -1 || path1 == 1 || flag == 0) /*<------------*/
+	if (path1 == -1 || path1 == 1) /*<------------*/
 	{
 		if (args_array != NULL)
+		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
+			free_args_array(args_array);
+		}	
 	}
 
-	if ((path_values != NULL && *path_values[0] == '\0'))
+	if ((path_values != NULL && *path_values[0] == '\0') || flag == 0) /*<-------*/
 	{
 		if (args_array != NULL)
+		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
+			free_args_array(args_array);
+		}
 	}
-
-	if (args_array != NULL)
-		free_args_array(args_array);
 	
 	return (0);
 }
