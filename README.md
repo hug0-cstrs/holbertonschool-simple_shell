@@ -35,7 +35,13 @@ The objective of this project is to create from scratch a simple UNIX command in
 
 ---
 
-## Requirements:exclamation:
+## Requirements :exclamation:
 Installed gcc (GNU Compiler Collection) version 9.4.0 or newer.
 
 ---
+
+## Examples: hammer_and_wrench:
+### Clone repo using HTTPS
+```
+git clone https://github.com/v-dav/holbertonschool-simple_shell.git
+```
