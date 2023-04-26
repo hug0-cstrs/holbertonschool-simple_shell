@@ -9,7 +9,7 @@ Second group project at Holberton School : implement our own simplified version 
 
 The objective of this project is to create from scratch a simple UNIX command interpreter with limited functionality but applying the core concepts of a more robust shell. In simple words, the shell is a program that takes commands from the keyboard and gives them to the operating system to perform. It incorporates many features and generally executes other commands.
 
-## Technologies & Tools:computer:
+## Technologies & Tools :computer:
 
 ![Ubuntu](https://img.shields.io/badge/≡-Ubuntu-E95420?&style=flat-square&logo=Ubuntu&labelColor=282828)
 ![Git](https://img.shields.io/badge/≡-Git-F05032?logo=git&style=flat-square&labelColor=282828)
@@ -20,3 +20,6 @@ The objective of this project is to create from scratch a simple UNIX command in
 ![GitHub](https://img.shields.io/badge/≡-Docker-1563FF?logo=Docker&style=flat-square&logoColor=1563FF&labelColor=282828)
 ![GitHub](https://img.shields.io/badge/≡-Linux-181717?logo=Linux&style=flat-square&labelColor=282828)
 ![GitHub](https://img.shields.io/badge/≡-Markdown-A8B9CC?logo=Markdown&style=flat-square&labelColor=282828)
+![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
+![Brave](https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white)
+![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
