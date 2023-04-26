@@ -5,6 +5,10 @@
 Second group project at Holberton School : implement our own simplified version of a UNIX command line interpreter in C.
 
 
-## Description:bulb:
+## Description :scroll:
 
 The objective of this project is to create from scratch a simple UNIX command interpreter with limited functionality but applying the core concepts of a more robust shell. In simple words, the shell is a program that takes commands from the keyboard and gives them to the operating system to perform. It incorporates many features and generally executes other commands.
+
+## Technologies & Tools:computer:
+
+![Ubuntu](https://img.shields.io/badge/≡-Ubuntu-E95420?&style=flat-square&logo=Ubuntu&labelColor=282828)
