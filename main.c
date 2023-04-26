@@ -21,7 +21,7 @@
  */
 int main(int argc, char *argv[], char *envp[])
 {
-	int path1 = 0;/*<------------*/
+	int path1 = 0, execute; /*<------------*/
 	char *command = NULL;
 	size_t command_size = 0;
 	ssize_t getline_result;
@@ -47,7 +47,7 @@ int main(int argc, char *argv[], char *envp[])
 			break;
 		}
 
-		execute_command(path_values, command, argv);
+		execute = execute_command(path_values, command, argv);
 		free(command);
 		command = NULL;
 	}
@@ -58,7 +58,7 @@ int main(int argc, char *argv[], char *envp[])
 	if (path != NULL)
 		free(path);
 	
-	if (path1 == -1 || path1 == 1) /*<------------*/
+	if (path1 == -1 || path1 == 1 || execute == 0) /*<------------*/
 	{
 		free_args_array(path_values);
 		return (127);
