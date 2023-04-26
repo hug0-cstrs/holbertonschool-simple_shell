@@ -41,7 +41,7 @@ Installed gcc (GNU Compiler Collection) version 9.4.0 or newer.
 ---
 
 ## Examples :hammer_and_wrench:
-### Clone repo using HTTPS
+### Clone repository using HTTPS
 ```
 git clone https://github.com/v-dav/holbertonschool-simple_shell.git
 ```
@@ -51,3 +51,9 @@ You can compile the files using this command to check that there are no errors:
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
+
+---
+
+## Authors
+* **Vladimir Davidov** - [Vladimir](https://github.com/v-dav)
+* **Hugo CAstéras** - [Hugo](https://github.com/hug0-cstrs)
