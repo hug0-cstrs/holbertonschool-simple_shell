@@ -73,10 +73,7 @@ char *check_command(char **args_array, char **path_values, int *flag)
 		if (stat(args_array[0], &st) == 0)
 			*flag = 1;
 		else
-		{
-			printf("Unknown path\n");
 			return (NULL);
-		}
 	}
 	else
 	{
@@ -135,6 +132,28 @@ void free_args_array(char **args_array)
 }
 
 /**
+ * _free - function that frees strings and arrays of strings
+ * @cmd: string containing the command to execute
+ * @args_a: An array of strings containing command arguments
+ * @path_v: An array of strings containing the path values
+ * @path: A pointer to a copy of the PATH environment variable value
+ * @strcat: a pointer to a string containing the full path of the command
+ *
+ * Return: Nothing
+ */
+void _free(char *cmd, char **args_a, char **path_v, char *path, char *strcat)
+{
+	if (cmd != NULL)
+		free(cmd);
+	free_args_array(args_a);
+	free_args_array(path_v);
+	if (path != NULL)
+		free(path);
+	if (strcat != NULL)
+		free(strcat);
+}
+
+/**
  * execute_command - function that executes a command
  * @command: string containing the command to execute
  * @path_values: An array of strings containing the path values
@@ -179,54 +198,30 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 		else
 		{
 			wait(&status);
-
 			if (WIFEXITED(status)) /* 1 if child executed normally */
 			{
 				exit_status = WEXITSTATUS(status);
 				if (exit_status != 0) /* if non null, means error at execution */
 				{
 					if (flag == 2)
-					{
-						free(command);
-						free_args_array(args_array);
-						free(strcat);
-						if (path != NULL)
-							free(path);
-						free_args_array(path_values);
-					}
+						_free(command, args_array, path_values, path, strcat);
 					else if (flag == 1)
-					{
-						free(command);
-						free_args_array(args_array);
-						if (path != NULL)
-							free(path);
-						free_args_array(path_values);
-					}
-					exit (2);
+						_free(command, args_array, path_values, path, NULL);
+					exit(2);
 				}
 			}
-
 			if (flag == 2)
-			{
-				free_args_array(args_array);
-				free(strcat);
-			}
+				_free(NULL, args_array, NULL, NULL, strcat);
 			else if (flag == 1)
 				free_args_array(args_array);
 			return (1);
 		}
 	}
-
 	if (args_array != NULL && (_strcmp(args_array[0], _exit) == 0))
 	{
-		free(command);
-		if (path != NULL)
-			free(path);
-		free_args_array(args_array);
-		free_args_array(path_values);
+		_free(command, args_array, path_values, path, NULL);
 		exit(0);
 	}
-
 	if (path1 == -1)
 	{
 		if (args_array != NULL)
@@ -234,9 +229,8 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args_array[0]);
 			free_args_array(args_array);
 			return (0);
-		}	
+		}
 	}
-
 	if ((path_values != NULL && *path_values[0] == '\0') || flag == 0 || path1 == 1)
 	{
 		if (args_array != NULL)
@@ -246,6 +240,5 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 			return (0);
 		}
 	}
-	
 	return (2);
 }
