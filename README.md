@@ -51,7 +51,26 @@ You can compile the files using this command to check that there are no errors:
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
-
+### Valgrind
+hugo@LAPTOP-25FUP3F5:~/holbertonschool-simple_shell$ valgrind ./hsh
+==23753== Memcheck, a memory error detector
+==23753== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==23753== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==23753== Command: ./hsh
+==23753== 
+/bin/ls
+README.md  _getline.c  _strtok.c          hsh     path_values.c   simple_shell.h
+_free.c    _strfunc.c  execute_command.c  main.c  search_path1.c
+==23753== 
+==23753== HEAP SUMMARY:
+==23753==     in use at exit: 0 bytes in 0 blocks
+==23753==   total heap usage: 142 allocs, 142 frees, 18,486 bytes allocated
+==23753== 
+==23753== All heap blocks were freed -- no leaks are possible
+==23753== 
+==23753== For lists of detected and suppressed errors, rerun with: -s
+==23753== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+hugo@LAPTOP-25FUP3F5:~/holbertonschool-simple_shell$
 ---
 
 ## Authors
