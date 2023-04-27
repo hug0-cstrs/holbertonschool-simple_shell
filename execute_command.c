@@ -49,7 +49,6 @@ char **create_args_array(char *command)
  * path values for command by concatenating each path value with the command
  * name. It uses stat() system call to check if the command exists and is
  * executable.
- * If the command is not found, it prints "Unknown command" and returns NULL.
  * If the command is found as a valid paththe flag is set to 1. If the command
  * is found by searching the path values, the flag is set to 2. It returns the
  * full path of the command on success, NULL on failure.
@@ -92,7 +91,7 @@ char *check_command(char **args_array, char **path_values, int *flag)
 				free(strcat);
 				continue;
 			}
-			free(strcat); /*?????*/
+			free(strcat);
 		}
 	}
 
@@ -105,6 +104,19 @@ char *check_command(char **args_array, char **path_values, int *flag)
 	return (strcat);
 }
 
+/**
+ * _fork - function that fork
+ * @fl: flag to check command
+ * @args_a: An array of strings containing command arguments
+ * @strcat: a pointer to a string containing the full path of the command
+ * @cmd: string containing the command to execute
+ * @path_v: An array of strings containing the path values
+ * @path: A pointer to a copy of the PATH environment variable value
+ *
+ * Description: exits with status 1 if fork fails, status 2 if bad arguments
+ * in the command
+ * Return: Returns 1 on successful fork execution, or -1 if execve fails
+ */
 int _fork(int fl, char **args_a, char *strcat, char *cmd,
 char **path_v, char *path)
 {
@@ -155,14 +167,10 @@ char **path_v, char *path)
  * @path: A pointer to a copy of the PATH environment variable value
  *
  * Description: This function takes in the command entered by the user and
- * the path values and executes the command by forking a child process and
- * calling the execve() system call. It also checks if the entered command
- * is a valid path and if not, it searches the path values for the command.
- * If the command is not found in the path values,
- * it prints "Unknown command" and returns -1. After execution, it frees the
- * memory allocated for strcat.
+ * the path values and executes the command by calling _fork function.
  *
- * Return: Returns 1 on successful execution, -1 on failure
+ * Return: Returns 0 if PATH1 variable found or no valid command or PATH=""
+ * and 2 on successful execution
  */
 int execute_command(char **path_values, char *command, char **argv, char *path)
 {
