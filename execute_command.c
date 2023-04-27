@@ -58,11 +58,9 @@ char **create_args_array(char *command)
  */
 char *check_command(char **args_array, char **path_values, int *flag)
 {
-	char *strcat = NULL;
+	char *strcat = NULL, *env = "env", *env_path = "/usr/bin";
 	int j = 0;
 	struct stat st;
-	char *env = "env";
-	char *env_path = "/usr/bin";
 
 	if (args_array == NULL)
 		return (NULL);
@@ -94,13 +92,11 @@ char *check_command(char **args_array, char **path_values, int *flag)
 			free(strcat);
 		}
 	}
-
 	if ((_strcmp(args_array[0], env) == 0) && path_values == NULL)
 	{
 		strcat = _strcatcp(env_path, env);
 		*flag = 2;
 	}
-
 	return (strcat);
 }
 
