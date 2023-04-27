@@ -1,6 +1,7 @@
+
 ![Holberton School logo](https://user-images.githubusercontent.com/120781178/229278297-98c6e4b7-f15f-4788-a893-15cb97f10351.png)
 
-# :mortar_board: C - Simple Shell
+# C - Simple Shell :mortar_board: 
 
 Second group project at Holberton School : implement our own simplified version of a UNIX command line interpreter in C.
 
@@ -31,7 +32,16 @@ The objective of this project is to create from scratch a simple UNIX command in
 ## Requirements :exclamation:
 Installed gcc (GNU Compiler Collection) version 9.4.0 or newer.
 
----
+### Clone repository using HTTPS
+```
+git clone https://github.com/v-dav/holbertonschool-simple_shell.git
+```
+
+### Compilation
+All the files will be compiled on Ubuntu 20.04 LTS using :
+```
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+```
 
 ### List of allowed functions and system calls+
 
@@ -76,16 +86,6 @@ Installed gcc (GNU Compiler Collection) version 9.4.0 or newer.
 ---
 
 ## Examples :hammer_and_wrench:
-### Clone repository using HTTPS
-```
-git clone https://github.com/v-dav/holbertonschool-simple_shell.git
-```
-
-### Compilation
-All the files will be compiled on Ubuntu 20.04 LTS using :
-```
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-```
 
 ### Testing
 
@@ -112,27 +112,44 @@ hsh main.c shell.c test_ls_2
 
 ### Valgrind
 
-root@id:/holbertonschool-simple_shell$ valgrind ./hsh
-==23753== Memcheck, a memory error detector
-==23753== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==23753== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==23753== Command: ./hsh
-==23753== 
-/bin/ls
-README.md  _getline.c  _strtok.c          hsh     path_values.c   simple_shell.h
-_free.c    _strfunc.c  execute_command.c  main.c  search_path1.c
-==23753== 
-==23753== HEAP SUMMARY:
-==23753==     in use at exit: 0 bytes in 0 blocks
-==23753==   total heap usage: 142 allocs, 142 frees, 18,486 bytes allocated
-==23753== 
-==23753== All heap blocks were freed -- no leaks are possible
-==23753== 
-==23753== For lists of detected and suppressed errors, rerun with: -s
-==23753== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-root@id:/holbertonschool-simple_shell$
-
+    root@id:/holbertonschool-simple_shell# valgrind ./hsh
+    ==19647== Memcheck, a memory error detector
+    ==19647== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+    ==19647== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+    ==19647== Command: ./hsh
+    ==19647==
+    /bin/ls
+	README.md  _getline.c  _strtok.c          hsh     path_values.c   
+	simple_shell.h
+	_free.c    _strfunc.c  execute_command.c  main.c  search_path1.c
+    ==19647==
+    ==19647== HEAP SUMMARY:
+    ==19647== in use at exit: 0 bytes in 0 blocks
+    ==19647== total heap usage: 142 allocs, 142 frees, 18,486 bytes allocated
+    ==19647==
+    ==19647== All heap blocks were freed -- no leaks are possible
+    ==19647==
+    ==19647== For lists of detected and suppressed errors, rerun with: -s
+    ==19647== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+    root@id:/holbertonschool-simple_shell#
+    
 ---
+
+## Files
+All of the following files are programs written in C :
+|**Filename**|**Description**|
+|:-------|:---------:|
+|`_free.c`|File which content functions that frees strings and arrays of strings|
+|`_getline.c`|Gets a line from a stream|
+|`_strfunc.c`|Content : <br>_strcmp (function that compares 2 strings)<br>_strlen (returns the length of a string)<br>_strcpy (function that copies the string pointed to by src)<br>_strcatcp (function that concatenates two strings)|
+|`_strtok.c`|Allow to isolates sequential tokens in a null-terminated string|
+|`execute_command.c`|Allow to execute a command|
+|`main.c`|Main of the Simple Shell simulation program|
+|`path_values.c`|Get the PATH environment variable value in one single string|
+|`search_path1.c`|Allow to searche PATH1 environment variable|
+|`simple_shell.h`|Header file which content all function prototypes and include librairies|
+|`README.md`|README of the Simple Shell project|
+
 ## Flowchart
 
 ## Authors
