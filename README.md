@@ -96,7 +96,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 - Handles the `env`  built-in, that prints the current environment
 ---
 
-## Examples :hammer_and_wrench:
+## Examples :mate:
 
 ### Testing
 
