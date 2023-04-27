@@ -83,6 +83,17 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 -   `wait4`  (man 2 wait4)
 -   `write`  (man 2 write)
 
+### Features
+
+-  Displays a prompt and wait for the user to type a command. A command line always ends with a new line.
+-  The prompt is displayed again each time a command has been executed.
+-  The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+- Handles arguments
+- Handles errors.
+- Handles the “end of file” condition (`Ctrl+D`)
+- Handles the PATH
+- Handles the  `exit`  built-in, that exits the shell. Usage:  `exit`
+- Handles the `env`  built-in, that prints the current environment
 ---
 
 ## Examples :hammer_and_wrench:
@@ -92,6 +103,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 It works like this in interactive mode:
 
 ```
+root@id:/holbertonschool-simple_shell#
 ./hsh
 /bin/ls
 hsh main.c shell.c
@@ -100,6 +112,7 @@ exit
 And like this in non-interactive mode:
 
 ```
+root@id:/holbertonschool-simple_shell#
 echo "/bin/ls" | ./hsh
 hsh main.c shell.c test_ls_2
 cat test_ls_2
