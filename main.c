@@ -18,7 +18,7 @@
  */
 int main(int argc, char *argv[], char *envp[])
 {
-	int path1 = search_path1(envp), execute;
+	int path1 = search_path1(envp), execute = 0;
 	char *command = NULL, *path = get_path(envp);
 	size_t command_size = 0;
 	ssize_t getline_result;
