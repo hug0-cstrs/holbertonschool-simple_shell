@@ -52,7 +52,7 @@ You can compile the files using this command to check that there are no errors:
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 ### Valgrind
-hugo@LAPTOP-25FUP3F5:~/holbertonschool-simple_shell$ valgrind ./hsh
+root@id:~/holbertonschool-simple_shell$ valgrind ./hsh
 ==23753== Memcheck, a memory error detector
 ==23753== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==23753== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
@@ -70,7 +70,8 @@ _free.c    _strfunc.c  execute_command.c  main.c  search_path1.c
 ==23753== 
 ==23753== For lists of detected and suppressed errors, rerun with: -s
 ==23753== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-hugo@LAPTOP-25FUP3F5:~/holbertonschool-simple_shell$
+root@id:~/holbertonschool-simple_shell$
+
 ---
 
 ## Authors
