@@ -29,14 +29,10 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		getline_result = _getline(&command, &command_size, stdin);
 		if (getline_result == -1)
-		{
-			printf("Error: Failed to read command\n");
 			continue;
-		}
 		else if (getline_result == -2)
-		{
 			break;
-		}
+
 		execute = execute_command(path_values, command, argv, path);
 		free(command);
 		command = NULL;
