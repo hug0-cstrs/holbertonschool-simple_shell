@@ -172,13 +172,13 @@ void _free(char *cmd, char **args_a, char **path_v, char *path, char *strcat)
  */
 int execute_command(char **path_values, char *command, char **argv, char *path)
 {
-	int execve_res = 0, status, flag = 0, exit_status;
+	int execve_res = 0, status, fl = 0, exit_status;
 	pid_t pid;
 	char **args_array = create_args_array(command), *_exit = "exit";
-	char *strcat = check_command(args_array, path_values, &flag);
+	char *strcat = check_command(args_array, path_values, &fl);
 	int path1 = search_path1(environ);
 
-	if (flag)
+	if (fl)
 	{
 		pid = fork();
 		if (pid == -1)
@@ -188,9 +188,9 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 		}
 		else if (pid == 0)
 		{
-			if (flag == 1)
+			if (fl == 1)
 				execve_res = execve(args_array[0], args_array, environ);
-			else if (flag == 2)
+			else if (fl == 2)
 				execve_res = execve(strcat, args_array, environ);
 			if (execve_res == -1)
 				return (-1);
@@ -203,16 +203,16 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 				exit_status = WEXITSTATUS(status);
 				if (exit_status != 0) /* if non null, means error at execution */
 				{
-					if (flag == 2)
+					if (fl == 2)
 						_free(command, args_array, path_values, path, strcat);
-					else if (flag == 1)
+					else if (fl == 1)
 						_free(command, args_array, path_values, path, NULL);
 					exit(2);
 				}
 			}
-			if (flag == 2)
+			if (fl == 2)
 				_free(NULL, args_array, NULL, NULL, strcat);
-			else if (flag == 1)
+			else if (fl == 1)
 				free_args_array(args_array);
 			return (1);
 		}
@@ -231,7 +231,7 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 			return (0);
 		}
 	}
-	if ((path_values != NULL && *path_values[0] == '\0') || flag == 0 || path1 == 1)
+	if ((path_values != NULL && *path_values[0] == '\0') || fl == 0 || path1 == 1)
 	{
 		if (args_array != NULL)
 		{
