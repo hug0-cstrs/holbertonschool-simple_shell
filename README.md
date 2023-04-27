@@ -136,7 +136,7 @@ hsh main.c shell.c test_ls_2
 ---
 
 ## Files
-All of the following files are programs written in C :
+All of the following files contain functions written in C :
 |**Filename**|**Description**|
 |:-------|:---------:|
 |`_free.c`|File which content functions that frees strings and arrays of strings|
