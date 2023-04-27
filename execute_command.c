@@ -155,10 +155,9 @@ int execute_command(char **path_values, char *command, char **argv, char *path)
 {
 	int execve_res = 0, status, flag = 0, exit_status;
 	pid_t pid;
-	char **args_array = create_args_array(command);
+	char **args_array = create_args_array(command), *_exit = "exit";
 	char *strcat = check_command(args_array, path_values, &flag);
 	int path1 = search_path1(environ);
-	char *_exit = "exit";
 
 	if (flag)
 	{

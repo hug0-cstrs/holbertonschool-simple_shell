@@ -45,7 +45,7 @@ int main(int argc, char *argv[], char *envp[])
 	command = NULL;
 	if (path != NULL)
 		free(path);
-	if (path1 == -1 || path1 == 1 || execute == 0) /*<------------*/
+	if (path1 == -1 || path1 == 1 || execute == 0)
 	{
 		free_args_array(path_values);
 		return (127);
