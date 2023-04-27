@@ -14,18 +14,18 @@ The objective of this project is to create from scratch a simple UNIX command in
 
 
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-%2300599C?style=for-the-badge&logo=markdown&logoColor=black)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-%230db7ed.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![macOS](https://img.shields.io/badge/mac%20os-42EAE3?style=for-the-badge&logo=macos&logoColor=F0F0F0)
+![Windows](https://img.shields.io/badge/Windows-42EAE3?style=for-the-badge&logo=windows&logoColor=white)
+![Trello](https://img.shields.io/badge/Trello-2300599C.svg?style=for-the-badge&logo=Trello&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Markdown](https://img.shields.io/badge/Markdown-FCC624?style=for-the-badge&logo=markdown&logoColor=black)
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-FCC624?style=for-the-badge&logo=ubuntu&logoColor=white)
+![Google Chrome](https://img.shields.io/badge/Google%20Chrome-FB542B?style=for-the-badge&logo=GoogleChrome&logoColor=white)
+![Brave](https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23121011.svg?style=for-the-badge&logo=git&logoColor=white)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![Brave](https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white)
-![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
-![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
-![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
 ---
 
@@ -143,7 +143,7 @@ All of the following files are programs written in C :
 |`_getline.c`|Gets a line from a stream|
 |`_strfunc.c`|Content : <br>_strcmp (function that compares 2 strings)<br>_strlen (returns the length of a string)<br>_strcpy (function that copies the string pointed to by src)<br>_strcatcp (function that concatenates two strings)|
 |`_strtok.c`|Allow to isolates sequential tokens in a null-terminated string|
-|`execute_command.c`|Allow to execute a command|
+|`execute_command`|Allow to execute a command|
 |`main.c`|Main of the Simple Shell simulation program|
 |`path_values.c`|Get the PATH environment variable value in one single string|
 |`search_path1.c`|Allow to searche PATH1 environment variable|
