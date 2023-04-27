@@ -151,6 +151,7 @@ All of the following files are programs written in C :
 |`README.md`|README of the Simple Shell project|
 
 ## Flowchart
+![Simple Shell drawio (1)](https://user-images.githubusercontent.com/115344057/234935572-31f6e436-7134-4e53-a8f1-9f01153197ea.png)
 
 ## Authors
 Written by :
