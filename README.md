@@ -52,6 +52,7 @@ You can compile the files using this command to check that there are no errors:
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 ### Valgrind
+
 root@id:~/holbertonschool-simple_shell$ valgrind ./hsh
 ==23753== Memcheck, a memory error detector
 ==23753== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
@@ -76,4 +77,4 @@ root@id:~/holbertonschool-simple_shell$
 
 ## Authors
 * **Vladimir Davidov** - [Vladimir](https://github.com/v-dav)
-* **Hugo CAstéras** - [Hugo](https://github.com/hug0-cstrs)
+* **Hugo Castéras** - [Hugo](https://github.com/hug0-cstrs)
