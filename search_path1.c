@@ -1,5 +1,13 @@
 #include "simple_shell.h"
 
+/**
+ * search_path1 - function that searches PATH1 environment variable
+ * @environ: a table of strings containing all system environment variables
+ *
+ * Return: Returns 1 if PATH1 variable is found, 0 if not, -1 if there isn't
+ * any system environment defined
+ */
+
 int search_path1(char **environ)
 {
 	int i = 0;

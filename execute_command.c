@@ -139,6 +139,7 @@ void free_args_array(char **args_array)
  * @command: string containing the command to execute
  * @path_values: An array of strings containing the path values
  * @argv: An array of strings containing the arguments passed to the program
+ * @path: A pointer to a copy of the PATH environment variable value
  *
  * Description: This function takes in the command entered by the user and
  * the path values and executes the command by forking a child process and
