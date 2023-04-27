@@ -109,9 +109,9 @@ char *check_command(char **args_array, char **path_values, int *flag)
  * @path_v: An array of strings containing the path values
  * @path: A pointer to a copy of the PATH environment variable value
  *
- * Description: exits with status 1 if fork fails, status 2 if bad arguments
- * in the command
- * Return: Returns 1 on successful fork execution, or -1 if execve fails
+ * Description: exits with status 2 if bad arguments in the command
+ * Return: Returns 1 on successful fork execution, -2 if fork fails or
+ * -1 if execve fails
  */
 int _fork(int fl, char **args_a, char *strcat, char *cmd,
 char **path_v, char *path)
@@ -121,7 +121,7 @@ char **path_v, char *path)
 
 	pid = fork();
 	if (pid == -1)
-		exit(1);
+		return (-2);
 	else if (pid == 0)
 	{
 		if (fl == 1)
