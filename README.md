@@ -109,6 +109,16 @@ cat test_ls_2 | ./hsh
 hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
 ```
+Error management:
+
+```
+root@id:/holbertonschool-simple_shell#
+echo "qwerty" | ./hsh
+./hsh: 1: qwerty: not found
+echo "qwerty" | ./././hsh
+./././hsh: 1: qwerty: not found
+
+```
 
 ### Valgrind
 
