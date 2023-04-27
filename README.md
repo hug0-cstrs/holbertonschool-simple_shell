@@ -133,6 +133,43 @@ hsh main.c shell.c test_ls_2
     ==19647== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
     root@id:/holbertonschool-simple_shell#
     
+### Betty Style
+
+    root@5215054250f3:~/holbertonschool-simple_shell# betty *.c
+    
+    ========== execute_command.c ==========
+    create_args_array
+    check_command
+    _fork
+    execute_command
+    
+    ========== _free.c ==========
+    free_args_array
+    _free
+    
+    ========== _getline.c ==========
+    _getline
+    
+    ========== main.c ==========
+    main
+    
+    ========== path_values.c ==========
+    get_path
+    get_path_values
+    
+    ========== search_path1.c ==========
+    search_path1
+    
+    ========== _strfunc.c ==========
+    _strcmp
+    _strlen
+    _strcpy
+    _strcatcp
+    
+    ========== _strtok.c ==========
+    is_delim
+    _strtok
+
 ---
 
 ## Files
