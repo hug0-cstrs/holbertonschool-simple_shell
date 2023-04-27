@@ -8,22 +8,22 @@ Second group project at Holberton School : implement our own simplified version 
 
 ## Description :scroll:
 
-The objective of this project is to create from scratch a simple UNIX command interpreter with limited functionality but applying the core concepts of a more robust shell. In simple words, the shell is a program that takes commands from the keyboard and gives them to the operating system to perform. It incorporates many features and generally executes other commands.
+The objective of this project is to create from scratch a simple UNIX command interpreter with limited functionality but applying the core concepts of a more robust shell. In simple words, the shell is a program that takes commands from the keyboard and gives them to the operating system to perform. It incorporates many features and generally executes other commands. But `cd` command isn't handle.
 
 ## Technologies & Tools :computer:
 
 
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
-![Markdown](https://img.shields.io/badge/Markdown-%2300599C?style=for-the-badge&logo=markdown&logoColor=black)
+![Markdown](https://img.shields.io/badge/Markdown-%2300599C?style=for-the-badge&logo=markdown&logoColor=whithe)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-%230db7ed.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![macOS](https://img.shields.io/badge/mac%20os-42EAE3?style=for-the-badge&logo=macos&logoColor=F0F0F0)
+![macOS](https://img.shields.io/badge/mac%20os-42EAE3?style=for-the-badge&logo=macos&logoColor=000000)
 ![Windows](https://img.shields.io/badge/Windows-42EAE3?style=for-the-badge&logo=windows&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-2300599C.svg?style=for-the-badge&logo=Trello&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-FCC624?style=for-the-badge&logo=ubuntu&logoColor=white)
-![Google Chrome](https://img.shields.io/badge/Google%20Chrome-FB542B?style=for-the-badge&logo=GoogleChrome&logoColor=white)
 ![Brave](https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white)
+![Google Chrome](https://img.shields.io/badge/Google%20Chrome-FB542B?style=for-the-badge&logo=GoogleChrome&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23121011.svg?style=for-the-badge&logo=git&logoColor=white)
 
@@ -38,7 +38,7 @@ git clone https://github.com/v-dav/holbertonschool-simple_shell.git
 ```
 
 ### Compilation
-All the files will be compiled on Ubuntu 20.04 LTS using :
+All files will be compiled on Ubuntu 20.04 LTS using :
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
