@@ -1,16 +1,13 @@
 #include "simple_shell.h"
 
 /**
- * free_args_array - function that free memory allocated for an arguments array
+ * free_args_array - function that frees memory allocated for arguments array
  * @args_array: array of arguments to free
  *
  * Description: This function takes in an array of arguments and frees
- * the memory
- * allocated for each argument and the array itself using free().
- * If the arguments
- * array is empty, it does nothing.
+ * the memory allocated for each argument and the array itself using free().
  *
- * Return: void
+ * Return: nothing
 */
 void free_args_array(char **args_array)
 {
@@ -33,9 +30,9 @@ void free_args_array(char **args_array)
  * @args_a: An array of strings containing command arguments
  * @path_v: An array of strings containing the path values
  * @path: A pointer to a copy of the PATH environment variable value
- * @strcat: a pointer to a string containing the full path of the command
+ * @strcat: A pointer to a string containing the full path of the command
  *
- * Return: Nothing
+ * Return: nothing
  */
 void _free(char *cmd, char **args_a, char **path_v, char *path, char *strcat)
 {

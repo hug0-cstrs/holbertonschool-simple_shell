@@ -2,7 +2,7 @@
 
 /**
  * is_delim - a function that checks if a character is delimiter
- * @c: the character to chel
+ * @c: the character to check
  * @delim: a string of delimiters
  *
  * Return: 1 if a character is a delimiter, if not 0

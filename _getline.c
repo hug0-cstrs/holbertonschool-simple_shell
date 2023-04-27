@@ -1,17 +1,17 @@
 #include "simple_shell.h"
 
 /**
- * _getline - get a line from a stream
+ * _getline - gets a line from a stream
  * @line: a pointer to a malloced buffer for the line
  * @linesize: the capacity of that buffer
  * @stream: stream to read the line from
  *
  * Description: reads a line from stream, delimited by the newline character
+ *
  * Return: return the number of characters written, excluding the terminating
- * NUL character.  The value -1 is returned if an error occurs,
+ * NULL character. The value -1 is returned if an error occurs,
  * or -2 if end-of-file is reached.
  */
-
 ssize_t _getline(char **line, size_t *linesize, FILE *stream)
 {
 	char buffer[128];
