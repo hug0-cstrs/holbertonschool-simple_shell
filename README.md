@@ -1,5 +1,5 @@
 
-![Holberton School logo](https://user-images.githubusercontent.com/120781178/229278297-98c6e4b7-f15f-4788-a893-15cb97f10351.png)
+![HolbSchoolDonuts](https://user-images.githubusercontent.com/115344057/234939211-77a74408-b2c4-423f-9dc4-8ef74afc9d1f.png)
 
 # C - Simple Shell :mortar_board: 
 
