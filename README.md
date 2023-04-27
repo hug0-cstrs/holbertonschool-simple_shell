@@ -203,12 +203,11 @@ All of the following files contain functions written in C :
 |`_getline.c`|Gets a line from a stream|
 |`_strfunc.c`|Content : <br>_strcmp (function that compares 2 strings)<br>_strlen (returns the length of a string)<br>_strcpy (function that copies the string pointed to by src)<br>_strcatcp (function that concatenates two strings)|
 |`_strtok.c`|Allow to isolates sequential tokens in a null-terminated string|
-|`execute_command`|Allow to execute a command|
+|`execute_command.c`|Module that allows to execute a command|
 |`main.c`|Main of the Simple Shell simulation program|
 |`path_values.c`|Get the PATH environment variable value in one single string|
 |`search_path1.c`|Allow to searche PATH1 environment variable|
-|`simple_shell.h`|Header file which content all function prototypes and include librairies|
-|`README.md`|README of the Simple Shell project|
+|`simple_shell.h`|Header file which contains all functions prototypes and include librairies|
 
 ## Flowchart :bar_chart:
 ![Simple Shell drawio (1)](https://user-images.githubusercontent.com/115344057/234935572-31f6e436-7134-4e53-a8f1-9f01153197ea.png)
