@@ -49,5 +49,6 @@ char *check_command(char **args_array, char **path_values, int *flag);
 int execute_command(char **path_values, char *command, char **argv, char *path);
 void free_args_array(char **args_array);
 int search_path1(char **environ);
+void _free(char *cmd, char **args_a, char **path_v, char *path, char *strcat);
 
 #endif
