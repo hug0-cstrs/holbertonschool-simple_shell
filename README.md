@@ -195,7 +195,7 @@ echo "qwerty" | ./././hsh
 
 ---
 
-## Files
+## Files :gear:
 All of the following files contain functions written in C :
 |**Filename**|**Description**|
 |:-------|:---------:|
@@ -210,10 +210,10 @@ All of the following files contain functions written in C :
 |`simple_shell.h`|Header file which content all function prototypes and include librairies|
 |`README.md`|README of the Simple Shell project|
 
-## Flowchart
+## Flowchart :bar_chart:
 ![Simple Shell drawio (1)](https://user-images.githubusercontent.com/115344057/234935572-31f6e436-7134-4e53-a8f1-9f01153197ea.png)
 
-## Authors
+## Authors :writing_hand:
 Written by :
 * **[Vladimir Davidov](https://github.com/v-dav)**
 * **[Hugo Castéras](https://github.com/hug0-cstrs)**
