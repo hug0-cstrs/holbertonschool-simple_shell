@@ -213,7 +213,7 @@ All of the following files contain functions written in C :
 |`simple_shell.h`|Header file which contains all functions prototypes and include librairies|
 
 ## Flowchart :bar_chart:
-![Simple Shell drawio (1)](https://user-images.githubusercontent.com/115344057/234935572-31f6e436-7134-4e53-a8f1-9f01153197ea.png)
+![Simple Shell Flowchart](https://user-images.githubusercontent.com/115344057/235094571-37bf8800-91fc-4bc9-8bbe-b401587425b6.png)
 
 ## Authors :writing_hand:
 Written by :
