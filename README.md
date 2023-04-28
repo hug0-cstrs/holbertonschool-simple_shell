@@ -10,6 +10,9 @@ Second group project at Holberton School : implementation of our own simplified 
 
 The objective of this project is to create from scratch a simple UNIX command interpreter with limited functionality but applying the core concepts of a more robust shell. In simple words, the shell is a program that takes commands from the keyboard and gives them to the operating system to perform. It incorporates many features and generally executes standard Shell commands found in PATH environment variable.`cd` command isn't handled.
 
+## Man Page
+[Man Page Simple Shell](https://github.com/v-dav/holbertonschool-simple_shell/blob/main/man_1_simple_shell.1)
+
 ## Technologies & Tools :computer:
 
 
