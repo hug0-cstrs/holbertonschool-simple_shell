@@ -1,0 +1,90 @@
+.TH "Simple Shell" "1" "28 april 2023" "Holberton School Project"
+.SH NAME
+Simple Shell \- A simple command-line interpreter
+
+.SH SYNOPSIS
+.B #include simple_shell.h
+.br
+.B int main(int argc, char *argv[], char *envp[]);
+.SH FILES
+simple_shell.h
+.br
+_free.c
+.br
+_getline.c
+.br
+_strfunc.c
+.br
+_strtok.c
+.br
+execute_command.c
+.br
+main.c
+.br
+path_values.c
+.br
+search_path1.c
+.SH REQUIREMENTS
+Simple Shell requires gcc (GNU Compiler Collection) version 9.4.0 or newer to compile.
+
+.SH DESCRIPTION
+Simple Shell is a program that reads commands from the standard input or a file and executes them in the underlying operating system. It is a simple implementation of a UNIX command-line interpreter with limited functionality but applying the core concepts of a more robust shell.
+
+.SH FEATURES
+Displays a prompt and wait for the user to type a command. A command line always ends with a new line.
+.br
+The prompt is displayed again each time a command has been executed.
+.br
+The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+.br
+Handles arguments
+.br
+Handles errors.
+.br
+Handles the “end of file” condition (Ctrl+D)
+.br
+Handles the PATH
+.br
+
+.SH COMMANDS
+.B Simple Shell supports the following built-in commands:
+
+.TP
+\fBexit\fR
+Exit the shell.
+
+.TP
+\fBenv\fR
+Print the current environment.
+
+.SH EXAMPLES
+.B Some usage examples:
+
+.TP
+.nf
+
+$ ./hsh
+$ ls
+hsh main.c shell.c
+$ exit
+$
+
+$ ./hsh
+$ /bin/pwd
+$ /root/holbertonschool-simple_shell
+$ exit
+$
+
+.SH RETURN VALUES
+Simple Shell returns 127 if no environment is defined, if PATH1 environment variable is defined, if PATH variable is an empty string or if the command is not found. If there are no errors, the program returns 0.
+
+.SH AUTHORS
+Written by Hugo Castéras and Vladimir Davidov
+
+.SH REPORTING BUGS
+Report any bugs to vladimir.davidov.pro@gmail.com and hugo.casteras@outlook.fr
+
+.SH COPYRIGHT
+This is a free software, you are free to change and redistribute it.
+
+
